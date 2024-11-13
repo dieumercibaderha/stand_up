@@ -469,30 +469,41 @@ def add_agents(request):
             return redirect('addagents')
         createutili=User.objects.create_user(username, email, password1)
         #generation matricule
+        try:
+            createutili.first_name=firstname
+            createutili.last_name=last_name
+            createutili.Photo=photo
+            createutili.Lieu=Lieu
+            createutili.Organisation=orgs
+            createutili.statut=statut
+            createutili.Matricule=mat
+            createutili.Stand_up=False
+            createutili.Nom=nom
+            
+            subject="OBTENTION MATRICULE STAND_UP"
+            message=f""" Bonjour cher (chère) partenaire,\n
+                    Pour accéder à la plateforme de suivi des alertes STANDUP, voici vos coordonnées :\n
+                    -	Code Utilisateur :{mat}
+                    -	Mot de passe :{password1}
+                    Notez ces informations en lieu sûr pour votre usage futur, et ne les divulguez à personne.\n
+
+                    Vous recevez cet email parce que vous travaillez pour une organisation qui participe au projet SENET avec STAND-UP. \n Ce projet vise à implémenter la surveillance épidémiologique par notification électronique en temps réel au Nord Kivu. 
+                    Prière ignorer cet email si votre email nous a été transmis par erreur. Sinon, veuillez cliquer sur le lien suivant pour vous connecter à la plateforme :
+                    """
+            
+            from_email=settings.EMAIL_HOST_USER
+            l=[email]
+            
+            to_list=l
+            send_mail(subject, message, from_email, to_list, fail_silently=False)
+            createutili.save()
         
-        createutili.first_name=firstname
-        createutili.last_name=last_name
-        createutili.Photo=photo
-        createutili.Lieu=Lieu
-        createutili.Organisation=orgs
-        createutili.statut=statut
-        createutili.Matricule=mat
-        createutili.Stand_up=False
-        createutili.Nom=nom
-        
-        subject="OBTENTION MATRICULE STAND_UP"
-        message=f"Voici votre code utilisateur pour acceder à la plateforme STAND_UP= {mat} et votre mot de passe est: {password1}"
-        from_email=settings.EMAIL_HOST_USER
-        l=[email]
-        
-        to_list=l
-        send_mail(subject, message, from_email, to_list, fail_silently=False)
-        createutili.save()
-       
-        
-        
-        
-        return redirect('addagents')
+            
+            
+            
+            return redirect('addagents')
+        except:
+            render(request, "error_4002.html")
         
     context={
             'org':org,
