@@ -395,7 +395,7 @@ def registe(request):
         password2=request.POST.get('password2')
         photo=request.FILES['photo'] or None
         Lieu=request.POST.get('lieu')
-        orgs=request.POST.get('org')
+        orgs="STAND_UP"
         statut=request.POST.get('statut')
         
         
