@@ -75,7 +75,7 @@
         <img src="{% static 'img/menu-icon/4.svg' %}" alt="">
         </div>
         <div class="nav_title">
-        <span>Agents</span>
+        <span>Acteurs</span>
         </div>
         </a>
         </li>
@@ -85,7 +85,7 @@
         <img src="{% static 'img/menu-icon/5.svg' %}" alt="">
         </div>
         <div class="nav_title">
-        <span>Allertes</span>
+        <span>Alertes</span>
         </div>
         </a>
         </li>
@@ -199,7 +199,7 @@
 <div class="white_card card_height_100 mb_30">
 <div class="white_card_header">
 <div class="white_box_tittle list_header mb-0">
-<h4>Liste des Agents</h4>
+<h4>Acteurs au projet</h4>
 <div class="box_right d-flex lms_block">
 <div class="serach_field_2">
 <div class="search_inner">
@@ -212,9 +212,11 @@
 </div>
 </div>
 <div class="add_button ml-10">
-<a href="{% url 'addagents' %}"  data-target="#addcategory" class="btn_1">Ajouter</a>
 <a href="{% url 'imprimer' %}"  data-target="#addcategory" class="btn_1">Imprimer</a>
 </div>
+<div class="add_button ml-10">
+    <a href="{% url 'addagents' %}"  data-target="#addcategory" class="btn_1">Ajouter</a>
+    </div>
 </div>
 </div>
 </div>
@@ -228,7 +230,7 @@
             <th scope="col">AGENT</th>
             <th scope="col">ADRESSE</th>
             <th scope="col">EMAIL</th>
-            <th scope="col">DATE</th>
+            <th scope="col">ORGANISATION PARTICIPANTE</th>
             <th scope="col">ACTION</th>
            
             </tr>
@@ -238,15 +240,21 @@
  <tr>
     <td>
     <div class="trade d-flex align-items-center">
+    
+    {% if a.Photo %}
     <img style="width: 40px; height: 40px;" src="{{a.Photo.url}}" alt="">
-    <span class="ml-3">{{a.username}}</span>
+    {% else %}
+    <img style="width: 40px; height: 40px;" src="" alt="No image">
+    {% endif %}
+        
+    <span class="ml-3">{{a.Nom}}</span>
     </div>
     </td>
     <td>
         {{a.Lieu}}
     </td>
     <td>{{a.email}}</td>
-    <td>{{a.Dates}}</td>
+    <td>{{a.Organisation}}</td>
     <td><a href="{% url 'profile_agents' a.id %}" class="status_btn">voir plus</a>
         <a href="{% url 'supp' a.id %}" class="status_btn" style="color: red;">Effacer</a></td>
     </td>
