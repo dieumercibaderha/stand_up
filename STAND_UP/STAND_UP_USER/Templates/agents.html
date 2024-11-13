@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="zxx">
+
+<!-- Mirrored from demo.dashboardpack.com/cryptocurrency-html/crypto_wallet.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Mar 2022 15:12:59 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>LES AGENTS </title>
+    <link rel="icon" href="{% static 'img/stand.png' %}" type="image/png">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'vendors/themefy_icon/themify-icons.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'vendors/niceselect/css/nice-select.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'vendors/owl_carousel/css/owl.carousel.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'vendors/gijgo/gijgo.min.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'vendors/font_awesome/css/all.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'vendors/tagsinput/tagsinput.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'vendors/datepicker/date-picker.css' %}" />
+    <link rel="stylesheet" href="{% static 'vendors/vectormap-home/vectormap-2.0.2.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'vendors/scroll/scrollable.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'vendors/datatable/css/jquery.dataTables.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'vendors/datatable/css/responsive.dataTables.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'vendors/datatable/css/buttons.dataTables.min.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'vendors/text_editor/summernote-bs4.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'vendors/morris/morris.css' %}">
+
+    <link rel="stylesheet" href="{% static 'vendors/material_icon/material-icons.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'css/metisMenu.css' %}">
+
+    <link rel="stylesheet" href="http://127.0.0.1:8000/{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="http://127.0.0.1:8000/{% static 'css/colors/default.css' %}" id="colorSkinCSS">
+</head>
+<body class="crm_body_bg">
+<div style=" display: flex;">
+    <img style="width: 200px; height: 60px;" 
+src="http://127.0.0.1:8000/{% static 'img/stand_up.jpg' %}" alt="" srcset="">
+
+<img style="width: 200px; height: 60px; margin-left: 70%;" 
+src="http://127.0.0.1:8000/{% static 'img/stand_up.jpg' %}" alt="" srcset="">
+
+</div>
+
+<center>
+    <h1>LISTE DES AGENTS</h1>
+</center>
+<center>
+    <table style="border: 1px solid black;" class="table lms_table_active3 ">
+        <thead style="background-color: rgb(238, 125, 48);">
+                <tr>
+                <th scope="col" style="border: 1px solid black;">AGENT</th>
+                <th scope="col" style="border: 1px solid black;">ADRESSE</th>
+                <th scope="col" style="border: 1px solid black;">EMAIL</th>
+                <th scope="col" style="border: 1px solid black;">DATE</th>
+                <th scope="col" style="border: 1px solid black;">ETAT CIVIL</th>
+                <th scope="col" style="border: 1px solid black;">FONCTION</th>
+               
+                </tr>
+        </thead>
+    <tbody>
+     {% for a in agents %}
+     <tr>
+        <td style="border: 1px solid black;">
+        <div class="trade d-flex align-items-center">
+        <img style="width: 40px; height: 40px;" src="{{a.Photo}}" alt="">
+        <span class="ml-3">{{a.username}}-{{a.first_name}}</span>
+        </div>
+        </td>
+        <td style="border: 1px solid black;">
+            {{a.Lieu}}
+        </td>
+        <td style="border: 1px solid black;">{{a.email}}</td>
+        <td style="border: 1px solid black;">{{a.Dates}}</td>
+        <td style="border: 1px solid black;">{{a.Etat_civil}}</td>
+        <td style="border: 1px solid black;">{{a.statut}}</td>
+        
+        
+        </tr>
+    
+     {% endfor %}
+       
+    </tbody>
+    </table>
+</center>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+
+<script src="{% static 'js/popper.min.js' %}"></script>
+
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+<script src="{% static 'js/metisMenu.js' %}"></script>
+
+<script src="{% static 'vendors/count_up/jquery.waypoints.min.js' %}"></script>
+
+<script src="{% static 'vendors/chartlist/Chart.min.js' %}"></script>
+
+<script src="{% static 'vendors/count_up/jquery.counterup.min.js' %}"></script>
+
+<script src="{% static 'vendors/niceselect/js/jquery.nice-select.min.js' %}"></script>
+
+<script src="{% static 'vendors/owl_carousel/js/owl.carousel.min.js' %}"></script>
+
+<script src="{% static 'vendors/datatable/js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'vendors/datatable/js/dataTables.responsive.min.js' %}"></script>
+<script src="{% static 'vendors/datatable/js/dataTables.buttons.min.js' %}"></script>
+<script src="{% static 'vendors/datatable/js/buttons.flash.min.js' %}"></script>
+<script src="{% static 'vendors/datatable/js/jszip.min.js' %}"></script>
+<script src="{% static 'vendors/datatable/js/pdfmake.min.js' %}"></script>
+<script src="{% static 'vendors/datatable/js/vfs_fonts.js' %}"></script>
+<script src="{% static 'vendors/datatable/js/buttons.html5.min.js' %}"></script>
+<script src="{% static 'vendors/datatable/js/buttons.print.min.js' %}"></script>
+
+<script src="{% static 'vendors/datepicker/datepicker.js' %}"></script>
+<script src="{% static 'vendors/datepicker/datepicker.en.js' %}"></script>
+<script src="{% static 'vendors/datepicker/datepicker.custom.js' %}"></script>
+<script src="{% static 'js/chart.min.js' %}"></script>
+<script src="{% static 'vendors/chartjs/roundedBar.min.js' %}"></script>
+
+<script src="{% static 'vendors/progressbar/jquery.barfiller.js' %}"></script>
+
+<script src="{% static 'vendors/tagsinput/tagsinput.js' %}"></script>
+
+<script src="{% static 'vendors/text_editor/summernote-bs4.js' %}"></script>
+<script src="{% static 'vendors/am_chart/amcharts.js' %}"></script>
+
+<script src="{% static 'vendors/scroll/perfect-scrollbar.min.js' %}"></script>
+<script src="{% static 'vendors/scroll/scrollable-custom.js' %}"></script>
+
+<script src="{% static 'vendors/vectormap-home/vectormap-2.0.2.min.js' %}"></script>
+<script src="{% static 'vendors/vectormap-home/vectormap-world-mill-en.js' %}"></script>
+
+<script src="{% static 'vendors/apex_chart/apex-chart2.js' %}"></script>
+<script src="{% static 'vendors/apex_chart/apex_dashboard.js' %}"></script>
+
+<script src="{% static 'vendors/chart_am/core.js' %}"></script>
+<script src="{% static 'vendors/chart_am/charts.js' %}"></script>
+<script src="{% static 'vendors/chart_am/animated.js' %}"></script>
+<script src="{% static 'vendors/chart_am/kelly.js' %}"></script>
+<script src="{% static 'vendors/chart_am/chart-custom.js' %}"></script>
+
+<script src="{% static 'js/dashboard_init.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
+</body>
+
+<!-- Mirrored from demo.dashboardpack.com/cryptocurrency-html/crypto_wallet.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Mar 2022 15:12:59 GMT -->
+</html>
