@@ -438,6 +438,8 @@ def registe(request):
     return render(request, "register.html", context)
 
 def add_agents(request):
+    current_site = get_current_site(request) 
+    site_url = f"https://{current_site.domain}"
     org=Organisation.objects.all()
     if request.method == "POST":
         nom=request.POST.get('username')
@@ -488,7 +490,7 @@ def add_agents(request):
                     Notez ces informations en lieu sûr pour votre usage futur, et ne les divulguez à personne.\n
 
                     Vous recevez cet email parce que vous travaillez pour une organisation qui participe au projet SENET avec STAND-UP. \n Ce projet vise à implémenter la surveillance épidémiologique par notification électronique en temps réel au Nord Kivu. 
-                    Prière ignorer cet email si votre email nous a été transmis par erreur. Sinon, veuillez cliquer sur le lien suivant pour vous connecter à la plateforme :
+                    Prière ignorer cet email si votre email nous a été transmis par erreur. Sinon, veuillez cliquer sur le lien: {site_url} suivant pour vous connecter à la plateforme :
                     """
             
             from_email=settings.EMAIL_HOST_USER
