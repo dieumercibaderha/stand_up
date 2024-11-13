@@ -381,7 +381,7 @@ def compte(request, id):
         "domain":current_site.domain,
         'menquete':menquete
     }
-    return render(request, "compte.html", context)
+    return render(request, "compte1.html", context)
 
 
 def registe(request):
