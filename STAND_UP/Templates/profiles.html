@@ -97,6 +97,16 @@
             </div>
             </a>
         </li>
+        <li class="">
+            <a href="{% url 'organ' %}" aria-expanded="false">
+            <div class="nav_icon_small">
+            <img src="{% static 'img/menu-icon/5.svg' %}" alt="">
+            </div>
+            <div class="nav_title">
+            <span>Organisations</span>
+            </div>
+            </a>
+        </li>
         
     </nav>
     <section class="main_content dashboard_part large_header_bg">
@@ -198,7 +208,7 @@
 <img class="mr-3 rounded-circle mr-0 mr-sm-3" src="{{ut.Photo.url}}" alt="" width="60" height="60">
 <div class="media-body">
 <span>Hello</span>
-<h4 class="mb-2">{{ut.username}} {{ut.first_name}}</h4>
+<h4 class="mb-2">{{compteuser.username}} {{compteuser.first_name}}</h4>
 <p class="mb-1" hidden> <span><i class="fa fa-phone mr-2 text-primary"></i></span> +1
 235 5547</p>
 <p class="mb-1"> <span><i class="fa fa-envelope mr-2 text-primary"></i></span>
@@ -209,19 +219,19 @@
 <ul class="card-profile__info">
 <li>
 <h5 class="mr-4">Address</h5>
-<span class="text-muted">{{ut.Lieu}}</span>
+<span class="text-muted">{{compteuser.Lieu}}</span>
 </li>
 <li class="mb-1">
 <h5 class="mr-4">Fonction</h5>
-<span>{{ut.statut}}</span>
+<span>{{compteuser.statut}}</span>
 </li>
 <li class="mb-1">
     <h5 class="mr-4">Etat Civil</h5>
-    <span>{{ut.Etat_civil}}</span>
+    <span>{{compteuser.Etat_civil}}</span>
     </li>
 <li>
 <h5 class="text-danger mr-4">Date de création </h5>
-<span class="text-danger">le {{ut.Dates}}</span>
+<span class="text-danger">le {{compteuser.Dates}}</span>
 </li>
 </ul>
 </div>
