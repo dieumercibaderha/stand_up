@@ -41,27 +41,27 @@
 
     <link rel="stylesheet" href="{% static 'css/metisMenu.css' %}">
 
-    <link rel="stylesheet" href="http://127.0.0.1:8000/{% static 'css/style.css' %}" />
-    <link rel="stylesheet" href="http://127.0.0.1:8000/{% static 'css/colors/default.css' %}" id="colorSkinCSS">
+    <link rel="stylesheet" href="{{site}}{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{{site}}{% static 'css/colors/default.css' %}" id="colorSkinCSS">
 </head>
 <body class="crm_body_bg">
 <div style=" display: flex;">
     <img style="width: 200px; height: 60px;" 
-src="http://127.0.0.1:8000/{% static 'img/stand_up.jpg' %}" alt="" srcset="">
+src="{{site}}{% static 'img/stand_up.jpg' %}" alt="" srcset="">
 
 <img style="width: 200px; height: 60px; margin-left: 70%;" 
-src="http://127.0.0.1:8000/{% static 'img/stand_up.jpg' %}" alt="" srcset="">
+src="{{site}}{% static 'img/stand_up.jpg' %}" alt="" srcset="">
 
 </div>
 
 <center>
-    <h1>LISTE DES AGENTS</h1>
+    <h1>LISTE DES PARTICIPANTS AU PROJET SENET</h1>
 </center>
 <center>
     <table style="border: 1px solid black;" class="table lms_table_active3 ">
         <thead style="background-color: rgb(238, 125, 48);">
                 <tr>
-                <th scope="col" style="border: 1px solid black;">AGENT</th>
+                <th scope="col" style="border: 1px solid black;">NOM</th>
                 <th scope="col" style="border: 1px solid black;">ADRESSE</th>
                 <th scope="col" style="border: 1px solid black;">EMAIL</th>
                 <th scope="col" style="border: 1px solid black;">DATE</th>
@@ -75,8 +75,8 @@ src="http://127.0.0.1:8000/{% static 'img/stand_up.jpg' %}" alt="" srcset="">
      <tr>
         <td style="border: 1px solid black;">
         <div class="trade d-flex align-items-center">
-        <img style="width: 40px; height: 40px;" src="{{a.Photo}}" alt="">
-        <span class="ml-3">{{a.username}}-{{a.first_name}}</span>
+        <img style="width: 40px; height: 40px;" src="{{site}}{{a.Photo.url}}" alt="">
+        <span class="ml-3">{{a.Nom}}-{{a.first_name}}</span>
         </div>
         </td>
         <td style="border: 1px solid black;">

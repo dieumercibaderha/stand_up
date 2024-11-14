@@ -20,15 +20,15 @@ from django.contrib.sites.shortcuts import get_current_site
 auj=date.today()
 # Create your views here.
 @login_required
-def accueil(request):
+def accueil1(request):
     current_site=get_current_site(request)
     ut=request.user
     context={
         'ut':ut,
         "domain":current_site.domain,
-        'ce':Alerte.objects.all().count,
-        'cm':Maladie.objects.all().count,
-        'cu':User.objects.all().count,
+        'ce':Alerte.objects.all().count(),
+        'cm':Maladie.objects.filter(id__in=Alerte.objects.values('Maladie')).count(),
+        'cu':User.objects.filter(username__in=Alerte.objects.values('Enqueteur')).count(),
         'alerte':Alerte.objects.all()
         
         
@@ -43,7 +43,7 @@ def enregistrement(request):
 
 
 @login_required
-def add_alerte(request):
+def add_alerte1(request):
     current_site=get_current_site(request)
     ut=request.user
     maladie=Maladie.objects.all()
@@ -91,7 +91,7 @@ def add_alerte(request):
     return render(request, "add_alerte1.html", context)
 
 @login_required
-def compte(request, id):
+def compte1(request, id):
     current_site=get_current_site(request)
     ut=request.user
     compteuser=User.objects.get(id=id)

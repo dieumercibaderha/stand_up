@@ -75,7 +75,7 @@
         <img src="{% static 'img/menu-icon/4.svg' %}" alt="">
         </div>
         <div class="nav_title">
-        <span>Acteurs</span>
+        <span>Participants</span>
         </div>
         </a>
         </li>
@@ -213,13 +213,19 @@
                     <label>ASC</label>
                     <input type="text" name="ASC" placeholder="ASC" value="{{ut.username}}">
                     </div>
-           
+                    <div class="col-lg-6">
+                        <label>Cas</label>
+                        <div class="common_input mb_20">
+                        <input type="number" name="Cas" placeholder="Cas">
+                        </div>
+                        </div>
             <div class="col-lg-6">
             <div class="common_input mb_20">
-            <label>Village</label>
-            <input type="text" readonly name="Zone_de_sant" placeholder="Zone de santé" value="{{ut.Lieu}}">
+            <label hidden>Villag</label>
+            <input type="text" hidden readonly name="Zone_de_sant" placeholder="Zone de santé" value="{{ut.Lieu}}">
             </div>
             </div>
+            
             <div class="col-lg-6">
             <label>Maladie</label>
             <select class="nice_Select2 nice_Select_line wide mb_20" name="maladie" style="display: none;">
@@ -231,15 +237,14 @@
 
            
           
-            <div class="col-lg-6">
-            <label>Cas</label>
-            <div class="common_input ">
-            <input type="number" name="Cas" placeholder="Cas">
-            </div>
-            </div>
+            
+
+            
+
+
             <div class="col-12">
             <div class="create_report_btn mt_30">
-            <button type="submit" class="btn_1 w-100">ENVOYER</button>
+            <button type="submit" class="btn_1 w-100">LANCER</button>
             </div>
             </div>
             </div>
@@ -258,9 +263,9 @@
 <div class="container-fluid">
 <div class="row">
 <div class="col-lg-12">
-<div class="footer_iner text-center">
-<p>2020 © Influence - Designed by <a href="#"> <i class="ti-heart"></i> </a><a href="#"> DashboardPack</a></p>
-</div>
+    <div class="footer_iner text-center">
+        <p>2024 © STAND_UP - conçu par <a href="#"> <i class="ti-heart"></i> </a><a href="#"> Stand up soft</a></p>
+        </div>
 </div>
 </div>
 </div>

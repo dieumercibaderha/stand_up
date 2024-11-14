@@ -27,17 +27,19 @@ def admine(request):
 
 @login_required
 def affiche(request):
+    current_site = get_current_site(request) 
+    site_url = f"https://{current_site.domain}"
     agents=User.objects.all()
     context={
           'agents':agents,
-        
+            'site':site_url
             }
     templates=get_template("agents.html").render(context)
     pdf_file=HTML(string=templates).write_pdf(stylesheets=[CSS(string='''
                                                                             @page{
                                                                                 size:A4 landscape;
-                                                                                margin-left:2.0cm;
-                                                                                margin-top:2.0cm;}
+                                                                                margin-left:0.2cm;
+                                                                                margin-top:1.0cm;}
                                                                                
                                                                                 '''
                                                                                 )])
@@ -57,9 +59,9 @@ def accueil(request):
     context={
         'ut':ut,
         "domain":current_site.domain,
-        'ce':Alerte.objects.all().count,
-        'cm':Maladie.objects.all().count,
-        'cu':User.objects.all().count,
+        'ce':Alerte.objects.all().count(),
+        'cm':Maladie.objects.filter(id__in=Alerte.objects.values('Maladie')).count(),
+        'cu':User.objects.filter(username__in=Alerte.objects.values('Enqueteur')).count(),
         'alerte':Alerte.objects.all()
         
         
@@ -243,7 +245,7 @@ def add_alerte(request):
         crea.save()
         us=User.objects.all()
         subject="NOUVEAU CAS"
-        message=f"Nous vous signalons que l'agent {ut.username} qui est {ut.statut} vient de retrouvrer {cas} cas de {Maladie.objects.get(id=maladies)} à {ut.Lieu}"
+        message=f"Nous vous signalons que l'agent {ut.Nom} qui est {ut.statut} vient de retrouvrer {cas} cas de {Maladie.objects.get(id=maladies)} à {ut.Lieu}"
         from_email=settings.EMAIL_HOST_USER
         l=["baderha1@gmail.com"]
         l.extend([li.email for li in us])
