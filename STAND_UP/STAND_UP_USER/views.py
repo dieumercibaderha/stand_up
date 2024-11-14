@@ -65,8 +65,13 @@ def add_alerte1(request):
         )
         try:
             us=User.objects.all()
-            subject="NOUVEAU CAS"
-            message=f"Nous vous signalons que l'agent {ut.username} qui est {ut.statut} vient de retrouvrer {cas} cas de {Maladie.objects.get(id=maladies)} à {ut.Lieu}"
+            subject="SURVEILLANCE JOURNALIERE BASEE SUR LES EVENEMENTS(SBE)"
+            message=f"""Le système d'alerte des cas de maladie à potentiel épidemique vient d'enregistrer ce jour :\n
+            -CAS: {cas}
+            -MALADIE: {Maladie.objects.get(id=maladies)}
+            -LOCALITE: {ut.Lieu}
+            -RECO: {ut.Nom}
+            """
             from_email=settings.EMAIL_HOST_USER
             l=["baderha1@gmail.com"]
             l.extend([li.email for li in us])

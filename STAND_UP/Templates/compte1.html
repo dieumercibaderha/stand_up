@@ -111,39 +111,39 @@
         <a class="bell_notification_clicker nav-link-notify" href="#"> <img src="{% static 'img/icon/bell.svg' %}" alt="">
         
         </a>
-        
         <div class="Menu_NOtification_Wrap">
-        <div class="notification_Header">
-        <h4>Notifications d'alertes</h4>
-        </div>
-        <div class="Notification_body">
-        
-        <div class="single_notify d-flex align-items-center">
-        <div class="notify_thumb">
-        {% for notifd in notif %}
-        <a href="#"><img src="{{notifd.Photo}}" alt=""></a>
-    </div>
-    <div class="notify_content">
-    <a href="#"><h5>{{notifd.Enqueteur}} </h5></a>
-    <p>{{notifd.Maladie}}:{{cas}}</p>
-        {% endfor %}
-        </div>
-        </div>
-        
-        
-        
-       
-       
-        </div>
-        <div class="nofity_footer">
-        <div class="submit_button text-center pt_20">
-        <a href="{% url 'allerte' %}" class="btn_1 green">Voir plus</a>
-        </div>
-        </div>
-        </div>
-        
-        </li>
-        </div>
+            <div class="notification_Header">
+            <h4>Notifications d'alertes</h4>
+            </div>
+            <div class="Notification_body">
+            
+            
+            
+            {% for notifd in notif %}
+            <div class="single_notify d-flex align-items-center">
+                <div class="notify_thumb">
+            <a href="#"><img src="{{notifd.Photo.url}}" alt=""></a>
+            </div>
+            <div class="notify_content">
+            <a href="#"><h5>{{notifd.Enqueteur}} </h5></a>
+            <p>{{notifd.Maladie}}:{{cas}}</p>
+            </div>
+            </div>
+            {% endfor %}
+            
+            
+            
+            
+            </div>
+            <div class="nofity_footer">
+            <div class="submit_button text-center pt_20">
+            <a href="{% url 'accueil1' %}" class="btn_1 green">Voir Plus</a>
+            </div>
+            </div>
+            </div>
+            
+            </li>
+            </div>
         <div class="profile_info d-flex align-items-center">
         <div class="profile_thumb mr_20">
         <img src="{{ut.Photo.url}}" alt="#">
@@ -289,11 +289,12 @@
 <table class="table  ">
     <thead>
         <tr>
+        <th scope="col">DATE</th>
         <th scope="col">MALADIE</th>
         <th scope="col">CAS</th>
-        <th scope="col">ADDRESSE</th>
-        <th scope="col">VILLAGE</th>
-        <th scope="col">DATE</th>
+       
+        <th scope="col">LOCALITE</th>
+      
         <th scope="col" hidden>ACTIONS</th>
        
         </tr>
@@ -301,15 +302,16 @@
 <tbody>
 {% for menquete in menquete %}
 <tr>
+    <td>{{menquete.Dates}}</td>
     <td scope="row">
    {{menquete.Maladie}}
     </td>
     <td>
     <span class="badge badge-danger">{{menquete.Cas}}</span>
     </td>
-    <td> <img class="small_img" src="{% static 'img/currency/1.svg' %}" alt=""> {{menquete.Province}} </td>
+  
     <td>{{menquete.Zone_de_sant}} </td>
-    <td>{{menquete.Dates}}</td>
+    
     
     </tr>
 

@@ -115,51 +115,51 @@
         <a class="bell_notification_clicker nav-link-notify" href="#"> <img src="{% static 'img/icon/bell.svg' %}" alt="">
         
         </a>
-        
         <div class="Menu_NOtification_Wrap">
-        <div class="notification_Header">
-        <h4>Notifications d'alertes</h4>
-        </div>
-        <div class="Notification_body">
-        
-        <div class="single_notify d-flex align-items-center">
-        <div class="notify_thumb">
-        {% for notifd in notif %}
-                <a href="#"><img src="{{notifd.Photo}}" alt=""></a>
+            <div class="notification_Header">
+            <h4>Notifications d'alertes</h4>
+            </div>
+            <div class="Notification_body">
+            
+            
+            
+            {% for notifd in notif %}
+            <div class="single_notify d-flex align-items-center">
+                <div class="notify_thumb">
+            <a href="#"><img src="{{notifd.Photo.url}}" alt=""></a>
             </div>
             <div class="notify_content">
             <a href="#"><h5>{{notifd.Enqueteur}} </h5></a>
             <p>{{notifd.Maladie}}:{{cas}}</p>
-        {% endfor %}
-        </div>
-        </div>
-        
-        
-        
-       
-       
-        </div>
-        <div class="nofity_footer">
-        <div class="submit_button text-center pt_20">
-        <a href="{% url 'allerte' %}" class="btn_1 green">Voir plus</a>
-        </div>
-        </div>
-        </div>
-        
-        </li>
-        </div>
+            </div>
+            </div>
+            {% endfor %}
+            
+            
+            
+            
+            </div>
+            <div class="nofity_footer">
+            <div class="submit_button text-center pt_20">
+            <a href="{% url 'accueil1' %}" class="btn_1 green">Voir Plus</a>
+            </div>
+            </div>
+            </div>
+            
+            </li>
+            </div>
         <div class="profile_info d-flex align-items-center">
         <div class="profile_thumb mr_20">
         <img src="{{ut.Photo.url}}" alt="#">
         </div>
         <div class="author_name">
-        <h4 class="f_s_15 f_w_500 mb-0">{{ut.username}}-{{ut.first_name}}</h4>
+        <h4 class="f_s_15 f_w_500 mb-0">{{ut.Nom}}-{{ut.first_name}}</h4>
         <p class="f_s_12 f_w_400">{{ut.statut}}</p>
         </div>
         <div class="profile_info_iner">
         <div class="profile_author_name">
         <p>{{ut.statut}}</p>
-        <h5>{{ut.username}}</h5>
+        <h5>{{ut.Nom}}</h5>
         </div>
         <div class="profile_info_details">
         <a href="{% url 'compte1' ut.id %}">Mon Profile </a>

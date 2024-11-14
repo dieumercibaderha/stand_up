@@ -62,7 +62,8 @@ def accueil(request):
         'ce':Alerte.objects.all().count(),
         'cm':Maladie.objects.filter(id__in=Alerte.objects.values('Maladie')).count(),
         'cu':User.objects.filter(username__in=Alerte.objects.values('Enqueteur')).count(),
-        'alerte':Alerte.objects.all()
+        'alerte':Alerte.objects.all(),
+        'notif':Alerte.objects.filter(Dates=auj),
         
         
     }
@@ -306,7 +307,8 @@ def alertes(request):
     allerts=Alerte.objects.all().order_by('Dates')
     context={
         'ut':ut,
-        'allertes':allerts
+        'allertes':allerts,
+        'notif':Alerte.objects.filter(Dates=auj),
         
     }
     return render(request, "listes_allertes.html", context)
@@ -351,7 +353,8 @@ def profil_agents(request, id):
         'compteuser':compteuser,
         'ut':request.user,
         "domain":current_site.domain,
-        'menquete':menquete
+        'menquete':menquete,
+        'notif':Alerte.objects.filter(Dates=auj),
     }
     return render(request, "profiles.html", context)
 @login_required
@@ -363,6 +366,7 @@ def list_maladies(request):
     context={
         'mal':mal,
         'ut':request.user,
+        'notif':Alerte.objects.filter(Dates=auj),
         
     }
     return render(request, "listes_maladie.html", context)
@@ -381,7 +385,8 @@ def compte(request, id):
         'compteuser':compteuser,
         'ut':request.user,
         "domain":current_site.domain,
-        'menquete':menquete
+        'menquete':menquete,
+        'notif':Alerte.objects.filter(Dates=auj),
     }
     return render(request, "compte.html", context)
 
