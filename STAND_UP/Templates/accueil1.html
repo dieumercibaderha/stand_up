@@ -49,15 +49,15 @@
 
 <nav class="sidebar dark_sidebar">
 <div class="logo d-flex justify-content-between">
-<a class="large_logo" href="{% url 'accueil1' %}"><img style="width: 140px; height:50px;" src="{% static 'img/std.jpg' %}" alt=""></a>
-<a class="small_logo" href="{% url 'accueil1' %}"><img style="width: 100px; height:30px;"  src="{% static 'img/std.jpg' %}" alt=""></a>
+    <a class="large_logo" href="{% url 'accueil' %}"><img style="width: 140px; height:50px;" src="{% static 'img/stand.png' %}" alt=""></a>
+    <a class="small_logo" href="{% url 'accueil' %}"><img style="width: 100px; height:30px;"  src="{% static 'img/stand.png' %}" alt=""></a>
 <div class="sidebar_close_icon d-lg-none">
 <i class="ti-close"></i>
 </div>
 </div>
 <ul id="sidebar_menu">
 <li class="">
-<a class="has-arrow" href="#" aria-expanded="false">
+<a class="has-arrow" href="{% url 'accueil1' %}" aria-expanded="false">
 <div class="nav_icon_small">
 <img src="{% static 'img/menu-icon/1.svg' %}" alt="">
 </div>
@@ -121,17 +121,17 @@
     
     
     
-    {% for notifd in notif %}
-    <div class="single_notify d-flex align-items-center">
-        <div class="notify_thumb">
-    <a href="#"><img src="{{notifd.Photo.url}}" alt=""></a>
-    </div>
-    <div class="notify_content">
-    <a href="#"><h5>{{notifd.Enqueteur}} </h5></a>
-    <p>{{notifd.Maladie}}:{{cas}}</p>
-    </div>
-    </div>
-    {% endfor %}
+        {% for notifd in notif %}
+        <div class="single_notify d-flex align-items-center">
+            <div class="notify_thumb">
+        <a href="#"><img src="{{notifd.Photo.url}}" alt=""></a>
+        </div>
+        <div class="notify_content">
+        <a href="#"><h5>{{notifd.Enqueteur}} </h5></a>
+        <p>{{notifd.Maladie}}:{{cas}}</p>
+        </div>
+        </div>
+        {% endfor %}
     
     
     

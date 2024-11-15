@@ -170,13 +170,13 @@
             <img src="{{ut.Photo.url}}" alt="#">
             </div>
             <div class="author_name">
-            <h4 class="f_s_15 f_w_500 mb-0">{{ut.Nom}}-{{ut.first_name}}</h4>
+            <h4 class="f_s_15 f_w_500 mb-0">{{ut.username}}-{{ut.first_name}}</h4>
             <p class="f_s_12 f_w_400">{{ut.statut}}</p>
             </div>
             <div class="profile_info_iner">
             <div class="profile_author_name">
             <p>{{ut.statut}}</p>
-            <h5>{{ut.Nom}}</h5>
+            <h5>{{ut.username}}</h5>
             </div>
             <div class="profile_info_details">
             <a href="{% url 'compte' ut.id %}">Mon Profile </a>

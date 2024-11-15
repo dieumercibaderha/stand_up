@@ -140,17 +140,17 @@
             
             
             
-            {% for notifd in notif %}
-            <div class="single_notify d-flex align-items-center">
-                <div class="notify_thumb">
-            <a href="#"><img src="{{notifd.Photo.url}}" alt=""></a>
-            </div>
-            <div class="notify_content">
-            <a href="#"><h5>{{notifd.Enqueteur}} </h5></a>
-            <p>{{notifd.Maladie}}:{{cas}}</p>
-            </div>
-            </div>
-            {% endfor %}
+                {% for notifd in notif %}
+                <div class="single_notify d-flex align-items-center">
+                    <div class="notify_thumb">
+                <a href="#"><img src="{{notifd.Photo.url}}" alt=""></a>
+                </div>
+                <div class="notify_content">
+                <a href="#"><h5>{{notifd.Enqueteur}} </h5></a>
+                <p>{{notifd.Maladie}}:{{cas}}</p>
+                </div>
+                </div>
+                {% endfor %}
             
             
             
@@ -310,11 +310,12 @@
 <table class="table  ">
     <thead>
         <tr>
+        <th scope="col">DATE</th>
         <th scope="col">MALADIE</th>
         <th scope="col">CAS</th>
        
         <th scope="col">LOCALITE</th>
-        <th scope="col">DATE</th>
+       
         <th scope="col" hidden>ACTIONS</th>
        
         </tr>
@@ -322,15 +323,16 @@
 <tbody>
 {% for menquete in menquete %}
 <tr>
+    <td>{{menquete.Dates}}</td>
     <td scope="row">
-    <span class="sold-thumb">{{menquete.Maladie}}</span>
+    {{menquete.Maladie}}
     </td>
     <td>
     <span class="badge badge-danger">{{menquete.Cas}}</span>
     </td>
   
     <td>{{menquete.Zone_de_sant}} </td>
-    <td>{{menquete.Dates}}</td>
+   
     
     </tr>
 

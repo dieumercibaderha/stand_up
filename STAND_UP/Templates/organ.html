@@ -147,17 +147,17 @@
             </div>
             <div class="Notification_body">
             
-            <div class="single_notify d-flex align-items-center">
-            <div class="notify_thumb">
-            {% for notifd in notif %}
-            <a href="#"><img src="{{notifd.Photo}}" alt=""></a>
-        </div>
-        <div class="notify_content">
-        <a href="#"><h5>{{notifd.Enqueteur}} </h5></a>
-        <p>{{notifd.Maladie}}:{{cas}}</p>
-            {% endfor %}
-            </div>
-            </div>
+                {% for notifd in notif %}
+                <div class="single_notify d-flex align-items-center">
+                    <div class="notify_thumb">
+                <a href="#"><img src="{{notifd.Photo.url}}" alt=""></a>
+                </div>
+                <div class="notify_content">
+                <a href="#"><h5>{{notifd.Enqueteur}} </h5></a>
+                <p>{{notifd.Maladie}}:{{cas}}</p>
+                </div>
+                </div>
+                {% endfor %}
             
             
             

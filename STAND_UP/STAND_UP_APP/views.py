@@ -14,8 +14,9 @@ from weasyprint import HTML, CSS
 from weasyprint.text.fonts import FontConfiguration
 from django.template.loader import get_template
 from django.contrib.sites.shortcuts import get_current_site
+from django.utils import timezone
 
-auj=date.today()
+auj=timezone.now().date()
 User = get_user_model()
 
 # Create your views here.
@@ -63,7 +64,7 @@ def accueil(request):
         'cm':Maladie.objects.filter(id__in=Alerte.objects.values('Maladie')).count(),
         'cu':User.objects.filter(username__in=Alerte.objects.values('Enqueteur')).count(),
         'alerte':Alerte.objects.all(),
-        'notif':Alerte.objects.filter(Dates=auj),
+        'notif':Alerte.objects.filter(Dates__date=auj),
         
         
     }
@@ -90,7 +91,7 @@ def add_maladie(request):
         'ut':ut,
        
        
-        'notif':Alerte.objects.filter(Dates=auj),
+        'notif':Alerte.objects.filter(Dates__date=auj),
       
         
         
@@ -115,7 +116,7 @@ def mod_maladie(request, id):
         return redirect('list_maladie')
     context={
         'ut':ut,
-        'notif':Alerte.objects.filter(Dates=auj),
+        'notif':Alerte.objects.filter(Dates__date=auj),
         'maladie':maladie
     }
     
@@ -140,7 +141,8 @@ def organ(request):
    
     context={
         'ut':ut,
-        'organs':organs
+        'organs':organs,
+        'notif':Alerte.objects.filter(Dates__date=auj),
     }
     
     return render(request, "organ.html", context)    
@@ -170,8 +172,7 @@ def add_Organ(request):
         'ut':ut,
        
        
-        'notif':Alerte.objects.filter(Dates=auj),
-      
+        'notif':Alerte.objects.filter(Dates__date=auj),
         
         
     }
@@ -202,7 +203,7 @@ def mod_Organ(request, id):
         'ut':ut,
         'orgd':ordg,
        
-        'notif':Alerte.objects.filter(Dates=auj),
+        'notif':Alerte.objects.filter(Dates__date=auj),
       
         
         
@@ -243,21 +244,27 @@ def add_alerte(request):
             
             Province=ut.Lieu
         )
-        crea.save()
+        
         us=User.objects.all()
-        subject="NOUVEAU CAS"
-        message=f"Nous vous signalons que l'agent {ut.Nom} qui est {ut.statut} vient de retrouvrer {cas} cas de {Maladie.objects.get(id=maladies)} à {ut.Lieu}"
-        from_email=settings.EMAIL_HOST_USER
-        l=["baderha1@gmail.com"]
+        subject="SURVEILLANCE JOURNALIERE BASEE SUR LES EVENEMENTS(SBE)"
+        message=f"""Le système d'alerte des cas de maladie à potentiel épidemique vient d'enregistrer ce jour :\n
+            -CAS: {cas}
+            -MALADIE: {Maladie.objects.get(id=maladies)}
+            -LOCALITE: {ut.Lieu}
+            -RECO: {ut.Nom}
+            """
+        l=["baderha@gmail.com"]
         l.extend([li.email for li in us])
         to_list=l
+        from_email=settings.EMAIL_HOST_USER
         send_mail(subject, message, from_email, l, fail_silently=False)
+        crea.save()
         return redirect('allerte')
     context={
         'ut':ut,
         'maladie':maladie,
         'alertes':Alerte.objects.all(),
-        'notif':Alerte.objects.filter(Dates=auj),
+        'notif':Alerte.objects.filter(Dates__date=auj),
         "domain":current_site.domain,
         
         
@@ -308,7 +315,7 @@ def alertes(request):
     context={
         'ut':ut,
         'allertes':allerts,
-        'notif':Alerte.objects.filter(Dates=auj),
+        'notif':Alerte.objects.filter(Dates__date=auj),
         
     }
     return render(request, "listes_allertes.html", context)
@@ -337,7 +344,7 @@ def list_agents(request):
     context={
         'ut':ut,
         'agents':agents,
-        'notif':notif
+        'notif':Alerte.objects.filter(Dates__date=auj),
         
     }
     return render(request, "listes_agents.html", context)
@@ -354,7 +361,7 @@ def profil_agents(request, id):
         'ut':request.user,
         "domain":current_site.domain,
         'menquete':menquete,
-        'notif':Alerte.objects.filter(Dates=auj),
+        'notif':Alerte.objects.filter(Dates__date=auj),
     }
     return render(request, "profiles.html", context)
 @login_required
@@ -366,7 +373,7 @@ def list_maladies(request):
     context={
         'mal':mal,
         'ut':request.user,
-        'notif':Alerte.objects.filter(Dates=auj),
+        'notif':Alerte.objects.filter(Dates__date=auj),
         
     }
     return render(request, "listes_maladie.html", context)
@@ -386,7 +393,7 @@ def compte(request, id):
         'ut':request.user,
         "domain":current_site.domain,
         'menquete':menquete,
-        'notif':Alerte.objects.filter(Dates=auj),
+        'notif':Alerte.objects.filter(Dates__date=auj),
     }
     return render(request, "compte.html", context)
 
@@ -516,7 +523,8 @@ def add_agents(request):
         
     context={
             'org':org,
-            'ut':request.user
+            'ut':request.user,
+            'notif':Alerte.objects.filter(Dates__date=auj),
         }    
     return render(request, "add_agents.html", context)
 
