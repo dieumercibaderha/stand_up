@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-%6ozd&oftv-ef*@j2h@$xya_420dt^zd4sit8rpyzw*tipomyx
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['www.standupalertesante.org', 'standupalertesante.org']
 AUTH_USER_MODEL="STAND_UP_APP.User"
 
 
@@ -84,6 +84,9 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+
+
 
 
 # Password validation

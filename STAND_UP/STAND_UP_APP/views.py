@@ -187,15 +187,12 @@ def mod_Organ(request, id):
     ut=request.user
     ordg=Organisation.objects.get(id=id)
     if request.method=="POST":
-        
+        ids=request.POST.get('id')
         nom=request.POST.get('nom')
         ad=request.POST.get('ad')
         tel=request.POST.get('tel')
-        ordg.Nom=nom,
-        ordg.Adresse=ad,
-        ordg.Tel=tel
-        
-        ordg.save()
+        obj=Organisation.objects.filter(id=ids).update(Nom=nom, Adresse=ad)
+       
         
         
         return redirect('organ')
@@ -504,7 +501,8 @@ def add_agents(request):
                     Notez ces informations en lieu sûr pour votre usage futur, et ne les divulguez à personne.\n
 
                     Vous recevez cet email parce que vous travaillez pour une organisation qui participe au projet SENET avec STAND-UP. \n Ce projet vise à implémenter la surveillance épidémiologique par notification électronique en temps réel au Nord Kivu. 
-                    Prière ignorer cet email si votre email nous a été transmis par erreur. Sinon, veuillez cliquer sur le lien: {site_url} suivant pour vous connecter à la plateforme :
+                    Si vous ignorer tout sur ce projet, prière ignorer cette notification et accepter toutes nos excuses. 
+                    Sinon, veuillez cliquer sur le lien: {site_url} suivant pour vous connecter à la plateforme :
                     """
             
             from_email=settings.EMAIL_HOST_USER
