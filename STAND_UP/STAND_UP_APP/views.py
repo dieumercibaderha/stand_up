@@ -403,7 +403,8 @@ def registe(request):
         last_name=request.POST.get('last_name')
         email=request.POST.get('email')
         password1=request.POST.get('password1')
-        password2=request.POST.get('password2')
+        civil=request.POST.get('civil')
+        password2=password1
         photo=request.FILES['photo'] or None
         Lieu=request.POST.get('lieu')
         orgs="STAND_UP"
@@ -421,7 +422,7 @@ def registe(request):
          #   messages.error(request,"le nom doit etre alphanumérique")
         #    return redirect('registe')
         if password1 != password2:
-            messages.error("les deux mots de passes sont différents")
+            messages.error(request, "les deux mots de passes sont différents")
             return redirect('register')
         createutili=User.objects.create_user(username, email, password1)
         #generation matricule
@@ -433,6 +434,7 @@ def registe(request):
         createutili.Organisation=orgs
         createutili.statut=statut
         createutili.Matricule="ADMIN"
+        createutili.Etat_civil=civil
         createutili.Nom=nom
         
       

@@ -232,9 +232,11 @@
     <thead>
             <tr>
             <th scope="col">AGENT</th>
-            <th scope="col">ADRESSE</th>
-            <th scope="col">EMAIL</th>
+            <th scope="col">FONCTION</th>
             <th scope="col">ORGANISATION PARTICIPANTE</th>
+            <th scope="col">ADRESSE</th>
+           
+           
             <th scope="col">ACTION</th>
            
             </tr>
@@ -254,11 +256,13 @@
     <span class="ml-3">{{a.Nom}}</span>
     </div>
     </td>
-    <td>
+    <td>{{a.statut}}</td>
+    <td>{{a.Organisation}}</td>
+    <td> 
         {{a.Lieu}}
     </td>
-    <td>{{a.email}}</td>
-    <td>{{a.Organisation}}</td>
+   
+   
     <td><a href="{% url 'profile_agents' a.id %}" class="status_btn">voir plus</a>
         <a href="{% url 'supp' a.id %}" class="status_btn" style="color: red;">Effacer</a></td>
     </td>
