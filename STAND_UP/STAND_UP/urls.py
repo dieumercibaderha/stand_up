@@ -45,7 +45,16 @@ urlpatterns = [
     path('supporgan/<str:id>', supp_Organ, name="sup_organ"),
     path('Organ/', organ, name="organ"),
     path('enqueteur/', include("STAND_UP_USER.urls"), name="STAND_UP_USER"),
-    path('addagents/', add_agents, name="addagents")
+    path('addagents/', add_agents, name="addagents"),
+    
+    path('api/list_alerte/', AlerteListCreate.as_view(), name='mymodel-list-create'), 
+    path('api/alerte_detail/<int:pk>/', AlerteDetail.as_view(), name='mymodel-detail'),
+    
+    path('api/list_maladie/', MaladieListCreate.as_view(), name='MaladieListCreate'), 
+    path('api/maladie_detail/<int:pk>/', MaladieDetail.as_view(), name='maladie-detail'),
+    
+    path('api/list_user/', UserListCreate.as_view(), name='user-list-create'), 
+    path('api/user_detail/<int:pk>/', UserDetail.as_view(), name='user-detail'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:

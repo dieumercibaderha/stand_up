@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-%6ozd&oftv-ef*@j2h@$xya_420dt^zd4sit8rpyzw*tipomyx
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['www.standupalertesante.org', 'standupalertesante.org', 'standup-9d74da0a44fe.herokuapp.com']
+ALLOWED_HOSTS = ['www.standupalertesante.org', 'standupalertesante.org', 'standup-9d74da0a44fe.herokuapp.com','*']
 AUTH_USER_MODEL="STAND_UP_APP.User"
 
 
@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'STAND_UP_APP',
-    'STAND_UP_USER'
+    'STAND_UP_USER',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [

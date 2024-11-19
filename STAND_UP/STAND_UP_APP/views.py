@@ -15,9 +15,43 @@ from weasyprint.text.fonts import FontConfiguration
 from django.template.loader import get_template
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils import timezone
-
+from rest_framework import generics
+from .serializers import *
 auj=timezone.now().date()
 User = get_user_model()
+
+
+
+class AlerteListCreate(generics.ListCreateAPIView):
+    queryset = Alerte.objects.all()
+    serializer_class = AlerteSerializer
+
+class AlerteDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Alerte.objects.all()
+    serializer_class = AlerteSerializer
+    
+    
+class MaladieListCreate(generics.ListCreateAPIView):
+    queryset = Maladie.objects.all()
+    serializer_class = MaladieSerializer
+
+class MaladieDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Maladie.objects.all()
+    serializer_class = AlerteSerializer
+
+
+class UserListCreate(generics.ListCreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+class UserDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+
+
+
+
 
 # Create your views here.
 
