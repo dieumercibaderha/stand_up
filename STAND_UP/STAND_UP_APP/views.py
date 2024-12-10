@@ -443,6 +443,7 @@ def registe(request):
         Lieu=request.POST.get('lieu')
         orgs="STAND_UP"
         statut=request.POST.get('statut')
+        tel=request.POST.get('tel')
         
         
         username=nom
@@ -470,6 +471,7 @@ def registe(request):
         createutili.Matricule="ADMIN"
         createutili.Etat_civil=civil
         createutili.Nom=nom
+        createutili.Tel=tel
         
       
         createutili.save()
@@ -528,6 +530,7 @@ def add_agents(request):
             createutili.Matricule=mat
             createutili.Stand_up=False
             createutili.Nom=nom
+            createutili.Tel=tel
             
             subject="OBTENTION MATRICULE STAND_UP"
             message=f""" Bonjour cher (chère) partenaire,\n

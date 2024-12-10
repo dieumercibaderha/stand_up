@@ -12,6 +12,7 @@ class User(AbstractUser):
     Etat_civil=models.CharField(default="Célibataire", max_length=100)
     Stand_up=models.BooleanField(default="True")
     Matricule=models.CharField(default="---", max_length=50)
+    Tel=models.CharField(default="---", max_length=50)
     
 class Maladie(models.Model):
     Nom=models.CharField(max_length=500)
